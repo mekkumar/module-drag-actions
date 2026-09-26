@@ -2446,11 +2446,22 @@ Always test the module on a staging environment before production deployment.
 
 ---
 
-# License
+## License
 
 This project is licensed under the MIT License.
 
-See the [`LICENSE`](LICENSE) file for the complete license text.
+Copyright (c) 2026 Kunal Kumar
+
+See the [LICENSE](LICENSE) file for the complete license text.
+
+### Third-Party Software
+
+This module is designed to work with Magento 2 / Adobe Commerce and uses
+Magento framework APIs and frontend libraries provided by the Magento platform.
+
+Magento 2 / Adobe Commerce remains subject to its own licensing terms.
+This license applies only to the Kumar_DragActions module and does not
+modify or replace the license terms of Magento or any other third-party software.
 
 ---
 
