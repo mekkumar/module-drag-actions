@@ -1,0 +1,22 @@
+{
+  "name": "mekkumar/module-drag-actions",
+  "description": "Magento 2 floating drag/swipe product actions UX module",
+  "type": "magento2-module",
+  "license": "MIT",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Kumar\\DragActions\\": "."
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "magento/framework": "*",
+    "magento/module-catalog": "*",
+    "magento/module-checkout": "*",
+    "magento/module-customer": "*",
+    "magento/module-wishlist": "*"
+  }
+}

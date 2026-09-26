@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+
+        <tab id="kumar" translate="label" sortOrder="900">
+            <label>Kumar</label>
+        </tab>
+
+        <section id="kumar_dragactions"
+                 translate="label"
+                 type="text"
+                 sortOrder="900"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+
+            <label>Drag Actions</label>
+            <tab>kumar</tab>
+            <resource>Kumar_DragActions::dragactions</resource>
+
+            <!-- General -->
+            <group id="general"
+                   translate="label"
+                   type="text"
+                   sortOrder="10"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+
+                <label>General</label>
+
+                <field id="enabled"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Enable Drag Actions</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+            </group>
+
+            <!-- Actions -->
+            <group id="actions"
+                   translate="label"
+                   type="text"
+                   sortOrder="20"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+
+                <label>Actions</label>
+
+                <field id="cart"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Drag to Cart</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+
+                <field id="wishlist"
+                       translate="label"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Drag to Wishlist</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+
+                <field id="compare"
+                       translate="label"
+                       type="select"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Drag to Compare</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+
+                <field id="save_later"
+                       translate="label"
+                       type="select"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Drag to Save for Later</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+
+                <field id="remove"
+                       translate="label"
+                       type="select"
+                       sortOrder="50"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Drag to Remove</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+            </group>
+
+            <!-- Interaction -->
+            <group id="interaction"
+                   translate="label"
+                   type="text"
+                   sortOrder="30"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+
+                <label>Interaction</label>
+
+                <field id="desktop_drag"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Desktop Drag</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+
+                <field id="mobile_swipe"
+                       translate="label"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Mobile Swipe</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+            </group>
+
+            <!-- Appearance -->
+            <group id="appearance"
+                   translate="label"
+                   type="text"
+                   sortOrder="40"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+
+                <label>Appearance</label>
+
+                <field id="button_color"
+                       translate="label"
+                       type="text"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Button Color</label>
+
+                    <comment>
+                        Enter a HEX color, for example #000000
+                    </comment>
+
+                </field>
+
+                <field id="button_text_color"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Button Text/Icon Color</label>
+
+                    <comment>
+                        Enter a HEX color, for example #FFFFFF
+                    </comment>
+
+                </field>
+
+            </group>
+
+        </section>
+    </system>
+</config>

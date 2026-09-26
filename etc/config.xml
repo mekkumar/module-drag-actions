@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <default>
+        <kumar_dragactions>
+            <general><enabled>1</enabled></general>
+            <actions>
+                <cart>1</cart>
+                <wishlist>1</wishlist>
+                <compare>1</compare>
+                <save_later>1</save_later>
+                <remove>1</remove>
+            </actions>
+            <interaction>
+                <desktop_drag>1</desktop_drag>
+                <mobile_swipe>1</mobile_swipe>
+            </interaction>
+            <appearance>
+                <button_color>#000000</button_color>
+                <button_text_color>#FFFFFF</button_text_color>
+            </appearance>
+        </kumar_dragactions>
+    </default>
+</config>

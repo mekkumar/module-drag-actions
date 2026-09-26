@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Kumar_DragActions::css/drag-actions.css"/>
+    </head>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Kumar\DragActions\Block\DragActions"
+                   name="kumar.dragactions"
+                   template="Kumar_DragActions::drag-actions.phtml"
+                   ifconfig="kumar_dragactions/general/enabled"
+                   cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

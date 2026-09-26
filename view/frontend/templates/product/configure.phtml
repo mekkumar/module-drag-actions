@@ -1,0 +1,191 @@
+<?php
+/** @var \Kumar\DragActions\Block\Product\Configure $block */
+
+$escaper = $block->getEscaper();
+$product = $block->getProduct();
+$action = $block->getAction();
+
+$productType = $product->getTypeId();
+?>
+
+<form
+    class="kumar-drag-actions__configure-form"
+    data-action="<?= $escaper->escapeHtmlAttr($action) ?>"
+    data-product-type="<?= $escaper->escapeHtmlAttr($productType) ?>"
+    method="post"
+>
+
+    <h3>
+        <?= $escaper->escapeHtml($product->getName()) ?>
+    </h3>
+
+    <?php if ($productType === 'configurable'): ?>
+
+        <div class="kumar-drag-actions__fields">
+
+            <?php foreach ($block->getOptions() as $attribute): ?>
+
+                <?php
+                $attributeId = (int) $attribute->getAttributeId();
+                $attributeCode = (string) $attribute->getAttributeCode();
+                ?>
+
+                <div class="field">
+
+                    <label
+                        for="kumar-option-<?= $attributeId ?>"
+                    >
+                        <?= $escaper->escapeHtml($attribute->getLabel()) ?>
+                    </label>
+
+                    <select
+                        id="kumar-option-<?= $attributeId ?>"
+                        name="super_attribute[<?= $attributeId ?>]"
+                        data-attribute-code="<?= $escaper->escapeHtmlAttr($attributeCode) ?>"
+                        required
+                    >
+                        <option value="">
+                            <?= $escaper->escapeHtml(__('Please select')) ?>
+                        </option>
+
+                        <?php foreach ($attribute->getOptions() as $option): ?>
+
+                            <?php
+                            $optionValue = (string) $option->getValue();
+                            $optionLabel = (string) $option->getLabel();
+                            ?>
+
+                            <?php if ($optionValue !== ''): ?>
+
+                                <option
+                                    value="<?= $escaper->escapeHtmlAttr($optionValue) ?>"
+                                >
+                                    <?= $escaper->escapeHtml($optionLabel) ?>
+                                </option>
+
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+
+                    </select>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    <?php elseif ($productType === 'bundle'): ?>
+
+        <div class="kumar-drag-actions__fields">
+
+            <?php foreach ($block->getBundleOptions() as $option): ?>
+
+                <?php
+                $optionId = (int) $option->getOptionId();
+                $isRequired = (bool) $option->getRequired();
+                ?>
+
+                <div class="field">
+
+                    <label
+                        for="kumar-bundle-<?= $optionId ?>"
+                    >
+                        <?= $escaper->escapeHtml($option->getTitle()) ?>
+                    </label>
+
+                    <select
+                        id="kumar-bundle-<?= $optionId ?>"
+                        name="bundle_option[<?= $optionId ?>]"
+                        <?= $isRequired ? 'required' : '' ?>
+                    >
+
+                        <?php if (!$isRequired): ?>
+
+                            <option value="">
+                                <?= $escaper->escapeHtml(__('Please select')) ?>
+                            </option>
+
+                        <?php endif; ?>
+
+                        <?php foreach ($option->getSelections() as $selection): ?>
+
+                            <?php
+                            $selectionId = (int) $selection->getSelectionId();
+                            $selectionName = (string) $selection->getName();
+                            ?>
+
+                            <option
+                                value="<?= $selectionId ?>"
+                            >
+                                <?= $escaper->escapeHtml($selectionName) ?>
+                            </option>
+
+                        <?php endforeach; ?>
+
+                    </select>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    <?php elseif ($productType === 'grouped'): ?>
+
+        <div class="kumar-drag-actions__fields">
+
+            <p>
+                <?= $escaper->escapeHtml(
+                    __('Grouped product quantities can be configured from the product page.')
+                ) ?>
+            </p>
+
+        </div>
+
+    <?php else: ?>
+
+        <p>
+            <?= $escaper->escapeHtml(
+                __('This product does not require additional configuration.')
+            ) ?>
+        </p>
+
+    <?php endif; ?>
+
+    <div class="field">
+
+        <label for="kumar-qty">
+            <?= $escaper->escapeHtml(__('Quantity')) ?>
+        </label>
+
+        <input
+            id="kumar-qty"
+            type="number"
+            min="1"
+            step="1"
+            name="qty"
+            value="1"
+            required
+        >
+
+    </div>
+
+    <!--
+        Keep the requested action inside the form as a fallback.
+        JavaScript also keeps this action in configuredAction.
+    -->
+    <input
+        type="hidden"
+        name="drag_action"
+        value="<?= $escaper->escapeHtmlAttr($action) ?>"
+    >
+
+    <button
+        type="submit"
+        class="kumar-drag-actions__submit"
+    >
+        <?= $escaper->escapeHtml(__('Continue')) ?>
+    </button>
+
+</form>

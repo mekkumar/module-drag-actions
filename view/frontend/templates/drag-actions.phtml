@@ -1,0 +1,169 @@
+<?php
+/** @var \Kumar\DragActions\Block\DragActions $block */
+
+$buttonColor = $block->getButtonColor();
+$buttonTextColor = $block->getButtonTextColor();
+?>
+
+<div id="kumar-drag-actions"
+     class="kumar-drag-actions"
+     data-action-url="<?= $escaper->escapeUrl($block->getActionUrl()) ?>"
+     data-configure-url="<?= $escaper->escapeUrl($block->getConfigureUrl()) ?>"
+     data-form-key="<?= $escaper->escapeHtmlAttr($block->getFormKey()) ?>"
+     data-desktop-drag="<?= $block->isInteractionEnabled('desktop_drag') ? '1' : '0' ?>"
+     data-mobile-swipe="<?= $block->isInteractionEnabled('mobile_swipe') ? '1' : '0' ?>"
+     style="
+         --kumar-drag-button-color: <?= $escaper->escapeHtmlAttr($buttonColor) ?>;
+         --kumar-drag-button-text-color: <?= $escaper->escapeHtmlAttr($buttonTextColor) ?>;
+     ">
+
+    <!-- Trigger -->
+    <button type="button"
+            class="kumar-drag-actions__trigger"
+            aria-label="<?= $escaper->escapeHtmlAttr(__('Product actions')) ?>">
+
+        <span class="kumar-icon kumar-icon-actions"
+              aria-hidden="true"></span>
+
+    </button>
+
+    <!-- Action Panel -->
+    <div class="kumar-drag-actions__panel" hidden>
+
+        <div class="kumar-drag-actions__title">
+            <?= $escaper->escapeHtml(__('Product Actions')) ?>
+        </div>
+
+        <div class="kumar-drag-actions__actions">
+
+            <!-- Add to Cart -->
+            <?php if ($block->isActionEnabled('cart')): ?>
+                <button type="button"
+                        class="kumar-drag-action"
+                        data-action="cart">
+
+                    <span class="kumar-icon kumar-icon-cart"
+                          aria-hidden="true"></span>
+
+                    <span class="kumar-drag-action__text">
+                        <?= $escaper->escapeHtml(__('Add to Cart')) ?>
+                    </span>
+
+                </button>
+            <?php endif; ?>
+
+            <!-- Wishlist -->
+            <?php if ($block->isActionEnabled('wishlist')): ?>
+                <button type="button"
+                        class="kumar-drag-action"
+                        data-action="wishlist">
+
+                    <span class="kumar-icon kumar-icon-wishlist"
+                          aria-hidden="true"></span>
+
+                    <span class="kumar-drag-action__text">
+                        <?= $escaper->escapeHtml(__('Wishlist')) ?>
+                    </span>
+
+                </button>
+            <?php endif; ?>
+
+            <!-- Compare -->
+            <?php if ($block->isActionEnabled('compare')): ?>
+                <button type="button"
+                        class="kumar-drag-action"
+                        data-action="compare">
+
+                    <span class="kumar-icon kumar-icon-compare"
+                          aria-hidden="true"></span>
+
+                    <span class="kumar-drag-action__text">
+                        <?= $escaper->escapeHtml(__('Compare')) ?>
+                    </span>
+
+                </button>
+            <?php endif; ?>
+
+            <!-- Save for Later -->
+            <?php if ($block->isActionEnabled('save_later')): ?>
+                <button type="button"
+                        class="kumar-drag-action"
+                        data-action="save_later">
+
+                    <span class="kumar-icon kumar-icon-save"
+                          aria-hidden="true"></span>
+
+                    <span class="kumar-drag-action__text">
+                        <?= $escaper->escapeHtml(__('Save for Later')) ?>
+                    </span>
+
+                </button>
+            <?php endif; ?>
+
+            <!-- Remove >
+            <?php if ($block->isActionEnabled('remove')): ?>
+                <button type="button"
+                        class="kumar-drag-action"
+                        data-action="remove">
+
+                    <span class="kumar-icon kumar-icon-remove"
+                          aria-hidden="true"></span>
+
+                    <span class="kumar-drag-action__text">
+                        <?= $escaper->escapeHtml(__('Remove')) ?>
+                    </span>
+
+                </button>
+            <?php endif; ?>
+
+        </div>-->
+
+        <!-- Status -->
+        <div class="kumar-drag-actions__status"
+             aria-live="polite">
+        </div>
+
+    </div>
+
+    <!-- Configuration Modal -->
+    <div class="kumar-drag-actions__modal" hidden>
+
+        <div class="kumar-drag-actions__modal-backdrop"></div>
+
+        <div class="kumar-drag-actions__modal-content"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="kumar-drag-actions-config-title">
+
+            <button type="button"
+                    class="kumar-drag-actions__modal-close"
+                    aria-label="<?= $escaper->escapeHtmlAttr(__('Close')) ?>">
+
+                <span aria-hidden="true">×</span>
+
+            </button>
+
+            <div id="kumar-drag-actions-config-title"
+                 class="kumar-drag-actions__config">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="kumar-drag-actions-loader"
+     class="kumar-drag-actions-loader"
+     hidden
+     aria-hidden="true">
+    <div class="kumar-drag-actions-loader__spinner"></div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "#kumar-drag-actions": {
+        "Kumar_DragActions/js/drag-actions": {}
+    }
+}
+</script>
