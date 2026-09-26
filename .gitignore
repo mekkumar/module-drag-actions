@@ -1,0 +1,25 @@
+# Operating system
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# IDE
+.idea/
+.vscode/
+
+# Composer
+/vendor/
+
+# Magento generated files
+/generated/
+var/
+pub/static/
+pub/media/
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
